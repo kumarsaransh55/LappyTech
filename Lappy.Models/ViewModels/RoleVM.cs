@@ -9,11 +9,9 @@ namespace Lappy.Models.ViewModels
 {
     public class RoleVM
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public ApplicationUser User { get; set; }
         public IEnumerable<SelectListItem> RoleList { get; set; }
         public IEnumerable<SelectListItem> CompanyList {  get; set; }
-        public int ?CompanyId { get; set; }
         public string Role {  get; set; }
 
     }

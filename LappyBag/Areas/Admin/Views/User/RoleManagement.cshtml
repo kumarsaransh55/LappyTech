@@ -16,10 +16,10 @@
         <div class="row pt-2">
             <div class="col-md-12">
                 <form method="post" class="row">
-                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="User.Id" />
                     <div class="form-floating mb-3 col-md-12">
-                        <input readonly asp-for="Name" class="form-control" autocomplete="name" aria-required="true" />
-                        <label asp-for="Name">Name</label>
+                        <input readonly asp-for="User.Name" class="form-control" autocomplete="name" aria-required="true" />
+                        <label asp-for="User.Name">Name</label>
                     </div>
                     <div class="form-floating mb-3 col-md-6">
                         
@@ -30,15 +30,16 @@
                         </select>
                     </div>
                     <div class="form-floating mb-3 col-md-6">
-                        <select asp-for="CompanyId" asp-items="@Model.CompanyList" class="form-select pt-2">
+                        <select asp-for="User.CompanyId" asp-items="@Model.CompanyList" class="form-select pt-2">
                             <option disabled selected>
                                 Select a Company
                             </option>
                         </select>
-                        <span asp-validation-for="CompanyId" class="text-danger"></span>
+                        <span asp-validation-for="User.CompanyId" class="text-danger"></span>
                     </div>
-                    <div class="col-md-12 text-center">
-                        <button id="updateSubmit" type="submit" class="w-100 btn btn-primary ">Update Role</button>
+                    <div class="col-md-12 text-center d-flex justify-content-center gap-3">
+                        <button id="updateSubmit" type="submit" class="flex-grow-1 btn btn-primary form-control">Update Role</button>
+                        <a asp-action="Index" class="flex-grow-1 btn btn-secondary border border-2 form-control">Back to List</a>
                     </div>
                 </form>
             </div>
@@ -51,25 +52,25 @@
     <script>
         $(document).ready(function(){
             if($('#Role option:selected').text() != "Company"){
-                $('#CompanyId').hide();
+                $('#User_CompanyId').hide();
             }
 
             $('#Role').change(function(){
                 var selection = $('#Role option:selected').text();
                 if(selection == "Company"){
-                    $('#CompanyId').show();
+                    $('#User_CompanyId').show();
                 }else{
-                    $('#CompanyId').hide();
-                    $('#CompanyId').prop('selectedIndex', 0);
-                     $('span[data-valmsg-for="CompanyId"]').text('');
+                    $('#User_CompanyId').hide();
+                    $('#User_CompanyId').prop('selectedIndex', 0);
+                     $('span[data-valmsg-for="User_CompanyId"]').text('');
                 }
             });
 
-            $('#CompanyId').change(function(){
+            $('#User_CompanyId').change(function(){
                 var companyValue = $(this).val();
                 var selection = $('#Role option:selected').text();
                 if(selection == "Company" && companyValue != ""){
-                    $('span[data-valmsg-for="CompanyId"]').text('');
+                    $('span[data-valmsg-for="User_CompanyId"]').text('');
                 }
             })
         })

@@ -1,4 +1,5 @@
 using Azure.Identity;
+using Lappy.DataAccess.BlobService;
 using Lappy.DataAccess.Data;
 using Lappy.DataAccess.DbInitializer;
 using Lappy.DataAccess.Repository;
@@ -49,7 +50,7 @@ namespace LappyBag
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-
+            builder.Services.AddScoped<IBlobService, BlobService>();
             builder.Services.AddAuthentication().AddFacebook(option =>
             {
                 option.AppId = builder.Configuration["Facebook:KeyId"];

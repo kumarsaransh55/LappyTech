@@ -5,10 +5,53 @@
 <div class="row g-4 align-items-start">
     <!-- Image -->
     <div class="col-md-5 text-center">
-        <img src="@Model.Product.ImageUrl"
-             alt="@Model.Product.ModelName"
-             class="img-fluid rounded shadow-sm"
-             style="max-height:550px; object-fit:contain;" />
+        @if (Model.Product.ProductImages != null && Model.Product.ProductImages.Any())
+        {
+            <div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="carousel">
+
+                <!-- 1. DYNAMIC INDICATORS -->
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < Model.Product.ProductImages.Count; i++)
+                    {
+                        <button type="button"
+                                data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide-to="@i"
+                                class="@(i == 0 ? "active" : "")"
+                                aria-current="@(i == 0 ? "true" : "false")">
+                        </button>
+                    }
+                </div>
+
+                <!-- 2. DYNAMIC IMAGES -->
+                <div class="carousel-inner">
+                    @for (int i = 0; i < Model.Product.ProductImages.Count; i++)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <img class="d-block w-100" src="@Model.Product.ProductImages.ToList()[i].ImageUrl" alt="Product Image">
+                        </div>
+                    }
+                </div>
+
+                <!-- 3. CONTROLS -->
+                @if (Model.Product.ProductImages.Count > 1)
+                {
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                }
+            </div>
+        }
+        else
+        {
+            <!-- FALLBACK: If no images exist in the database -->
+            <img src="https://placehold.co/600x400/png?text=No+Image" class="img-fluid rounded" alt="No Image" />
+        }
+
 
         <div class="d-flex justify-content-center mt-3">
             <form method="post" class="" style="max-width: 300px; width: 100%;" >

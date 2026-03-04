@@ -36,7 +36,16 @@
 
                 <!-- Product Image with Zoom wrapper -->
                 <a asp-action="Details" asp-route-id="@prod.Id" class="img-container ratio ratio-4x3">
-                    <img src="@prod.ImageUrl" class="card-img-top object-fit-cover" alt="@prod.ModelName">
+                    @if(prod.ProductImages != null && prod.ProductImages.Count>0)
+                    {
+                        <img src="@prod.ProductImages[0].ImageUrl" class="card-img-top object-fit-cover" alt="@prod.ModelName">
+                    }
+                    else{
+                    <!-- Optional: Show a placeholder if there are no images -->
+                    <img src="https://placehold.co/500x350?text=No+Image"
+                         class="card-img-top object-fit-cover"
+                         alt="no image available">
+                    }
                 </a>
 
                 <!-- Card Content -->

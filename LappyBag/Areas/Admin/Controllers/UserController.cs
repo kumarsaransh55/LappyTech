@@ -20,8 +20,8 @@ namespace LappyBag.Areas.Admin.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly ApplicationDbContext _dbContext;
         private readonly  RoleManager<IdentityRole> _roleManager;
-        private readonly UserManager<ApplicationUser> _userManager;
-        public UserController(IUnitOfWork unitOfWork, ApplicationDbContext dbContext, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
+        private readonly UserManager<IdentityUser> _userManager;
+        public UserController(IUnitOfWork unitOfWork, ApplicationDbContext dbContext, RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
         {
             _unitOfWork = unitOfWork;
             _dbContext = dbContext;
@@ -44,10 +44,8 @@ namespace LappyBag.Areas.Admin.Controllers
 
             var userObj = new RoleVM
             {
-                Id = user.Id,
-                Name = user.Name,
+                User = user,
                 Role = currentRole,
-                CompanyId = user.CompanyId,
                 RoleList = _roleManager.Roles.Select(u => new SelectListItem
                 {
                     Text = u.Name,
@@ -67,9 +65,7 @@ namespace LappyBag.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> RoleManagement(RoleVM roleVM)
         {
-            // 1. Fetch user using UserManager (this makes it the "Tracked" instance)
-            var user = await _userManager.FindByIdAsync(roleVM.Id);
-
+            var user = roleVM.User;
             if (user == null)
             {
                 return NotFound();
@@ -95,7 +91,7 @@ namespace LappyBag.Areas.Admin.Controllers
                 }
                 if (roleVM.Role == SD.Role_Company)
                 {
-                    user.CompanyId = roleVM.CompanyId;
+                    user.CompanyId = roleVM.User.CompanyId;
                 }
 
                 // 5. Final Save

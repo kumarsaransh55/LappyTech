@@ -22,7 +22,7 @@ namespace LappyBag.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Product> allProducts = _unitOfWork.Product.GetAll(includeProperties:"Category");
+            IEnumerable<Product> allProducts = _unitOfWork.Product.GetAll(includeProperties:"Category,ProductImages");
             return View(allProducts);
         }
 
@@ -32,7 +32,7 @@ namespace LappyBag.Areas.Customer.Controllers
             {
                 Count = 1,
                 ProductId = id,
-                Product = _unitOfWork.Product.Get(a => a.Id == id, "Category")
+                Product = _unitOfWork.Product.Get(a => a.Id == id, "Category,ProductImages")
             };
 
             return View(cart);

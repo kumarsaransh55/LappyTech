@@ -98,3 +98,25 @@ input[type=number]::-webkit-outer-spin-button {
     color: #0077b5 !important; /* The official LinkedIn Blue */
     text-shadow: 0 0 10px rgba(0, 119, 181, 0.5); /* Soft glow */
 }
+
+.dt-length {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* This creates a uniform space between the select and the label */
+}
+/* Reduce padding for all DataTables cells */
+table.dataTable td, 
+table.dataTable th {
+    padding: 3px 10px !important; /* Adjust '6px' to make it even smaller */
+    vertical-align: middle;        /* Keep text centered vertically */
+}
+
+/* Optional: Shrink the font size slightly for a more 'Pro' look */
+table.dataTable {
+    font-size: 0.9rem;
+}
+
+.table th, .table td {
+    padding: .5rem 1rem;
+    vertical-align: middle;
+}

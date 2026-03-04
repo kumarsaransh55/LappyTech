@@ -36,9 +36,10 @@ namespace LappyBag.Areas.Customer.Controllers
             var userId = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value;
             ShoppingCartVM shoppingCartVM = new ShoppingCartVM()
             {
-                ShoppingCartList = _unitOfWork.ShoppingCart.GetAll(s => s.ApplicationUserId == userId, "Product"),
+                ShoppingCartList = _unitOfWork.ShoppingCart.GetAll(s => s.ApplicationUserId == userId, "Product,Product.ProductImages").ToList(),
                 OrderHeader = new OrderHeader()
             };
+
             foreach (var item in shoppingCartVM.ShoppingCartList)
             {
                 double perProdPrice = getPriceAsPerQuantity(item) * item.Count ;
