@@ -61,7 +61,11 @@ namespace LappyBag
                 option.ClientId = builder.Configuration["Google:KeyId"];
                 option.ClientSecret = builder.Configuration["Google:KeySecret"];
             });
-
+            builder.Services.AddAuthentication().AddMicrosoftAccount(option =>
+            {
+                option.ClientId= builder.Configuration["Microsoft:KeyId"];
+                option.ClientSecret = builder.Configuration["Microsoft:KeySecret"];
+            });
             // --- KEY VAULT INTEGRATION START ---
             if (builder.Environment.IsProduction())
             {
