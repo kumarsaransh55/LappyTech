@@ -1,4 +1,4 @@
-# 💻 Lappy (LappyTech Procurement Platform)
+# 💻 LappyTech Procurement Platform
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)](#)
 [![Azure](https://img.shields.io/badge/Microsoft%20Azure-0089D6?logo=microsoft-azure&logoColor=white)](#)
