@@ -13,7 +13,7 @@
 
 <div align="center">
   <!-- Just drag and drop your best screenshot over the text below in GitHub -->
-  <img width="1920" height="1040" alt="LappyTech Homepage" src="https://github.com/user-attachments/assets/1d134a13-5305-4086-9e2a-6a93218c5bef" />
+  <img width="1920" height="1079" alt="LappyTech Homepage" src="https://github.com/user-attachments/assets/f072b006-67d3-4e0f-8474-1f06c7ed208f" />
 </div>
 
 ---
