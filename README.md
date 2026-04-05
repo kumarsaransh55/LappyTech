@@ -24,7 +24,7 @@
 - **Multi-Tenant Workflows:** Role-Based Access Control (RBAC) supporting distinct user journeys for retail consumers and corporate (B2B) entities.
 - **Dynamic Pricing Engine:** Automated tiered-volume pricing (e.g., 10+, 25+, 100+ units) and corporate Net-30 credit logic.
 - **Secure Checkout & Payments:** Razorpay integration with strict server-side HMAC-SHA256 signature validation to guarantee 100% financial data integrity.
-- **Asynchronous UI:** Seamless shopping cart and checkout experience using HTMX/Fetch API for partial page updates (zero screen flicker).
+- **Asynchronous UI:** Seamless shopping cart experience using ajax partial page updates (no reloading).
 - **Automated Communication:** Real-time transactional emails and order lifecycle tracking using MailKit and Brevo SMTP.
 - **Admin Dashboard:** Asynchronous, high-performance data grids utilizing DataTables, AJAX, and LINQ projections.
 
